@@ -1,0 +1,45 @@
+{
+  "name": "larps",
+  "version": "1.0.0",
+  "description": "it's a real sweet app",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo . -d --serve bundle.js --live",
+    "build": "browserify . -o bundle.js -p tinyify",
+    "test": "browserify test/index.js | node | tap-spec",
+    "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
+    "push": "gh-pages -d dist",
+    "deploy": "npm run build && npm run dist && npm run push"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/katiewright26/larps"
+  },
+  "author": "katiewright26",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katiewright26/larps/issues"
+  },
+  "homepage": "https://github.com/katiewright26/larps",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "budo": "^11.6.1",
+    "gh-pages": "^0.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
+    "tinyify": "^2.5.0",
+    "watchify": "^3.7.0"
+  }
+}
