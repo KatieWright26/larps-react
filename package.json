@@ -26,7 +26,11 @@
     "url": "https://github.com/katiewright26/larps/issues"
   },
   "homepage": "https://github.com/katiewright26/larps",
-  "dependencies": {},
+  "dependencies": {
+    "immer": "^5.0.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
