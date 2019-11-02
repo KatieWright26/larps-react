@@ -31,22 +31,18 @@ const initialState = {
   ],
 };
 
-function reducer(state = initialState, action) {
+const reducer = produce((state = initialState, action) => {
   switch (action.type) {
     case 'DELETE_LARP':
-      return produce(state, draftState => {
-        draftState.larps = draftState.larps.filter(
-          l => l.id !== action.payload
-        );
-      });
+      state.larps = state.larps.filter(l => l.id !== action.payload);
+      break;
     case 'CREATE_LARP':
-      return produce(state, draftState => {
-        draftState.larps.push(action.payload);
-      });
+      state.larps.push(action.payload);
+      break;
     default:
       return state;
   }
-}
+});
 
 const store = createStore(reducer);
 
