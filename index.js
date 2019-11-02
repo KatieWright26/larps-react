@@ -12,14 +12,22 @@ const initialState = {
       id: 1,
       name: 'star trek in the park',
       ownerId: 1,
-      characterIds: [1, 2, 3],
+      characters: [
+        { id: 1, name: 'Scotty' },
+        { id: 2, name: 'Spok' },
+        { id: 3, name: 'Captain Sleaze' },
+      ],
     },
-    { id: 3, name: 'spongebob', ownerId: 2, characterIds: [5, 7, 9] },
-  ],
-  characters: [
-    { id: 1, name: 'Scotty' },
-    { id: 2, name: 'Spok' },
-    { id: 3, name: 'Captain Sleaze' },
+    {
+      id: 3,
+      name: 'spongebob',
+      ownerId: 2,
+      characters: [
+        { id: 4, name: 'Michael' },
+        { id: 5, name: 'Spongebob' },
+        { id: 6, name: 'Patrick' },
+      ],
+    },
   ],
 };
 
@@ -30,6 +38,10 @@ function reducer(state = initialState, action) {
         draftState.larps = draftState.larps.filter(
           l => l.id !== action.payload
         );
+      });
+    case 'CREATE_LARP':
+      return produce(state, draftState => {
+        draftState.larps.push(action.payload);
       });
     default:
       return state;
