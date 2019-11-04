@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './styles/Form';
 
 class CreateLarp extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class CreateLarp extends Component {
   render() {
     return (
       <div>
-        <form
+        <Form
           onSubmit={e => {
             e.preventDefault();
             this.props.createLarp(this.state);
@@ -30,7 +31,7 @@ class CreateLarp extends Component {
             value={this.state.name}
           />
           <input type="submit" />
-        </form>
+        </Form>
       </div>
     );
   }

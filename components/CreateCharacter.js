@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './styles/Form';
 
 class CreateCharacter extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class CreateCharacter extends Component {
   render() {
     return (
       <div>
-        <form
+        <Form
           onSubmit={e => {
             e.preventDefault();
             this.props.createCharacter(this.state);
@@ -30,7 +31,7 @@ class CreateCharacter extends Component {
             placeholder="Enter character name"
           />
           <input type="submit"></input>
-        </form>
+        </Form>
       </div>
     );
   }

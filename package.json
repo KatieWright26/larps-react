@@ -29,8 +29,10 @@
   "dependencies": {
     "immer": "^5.0.0",
     "prop-types": "^15.7.2",
+    "react-is": "^16.11.0",
     "react-redux": "^7.1.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "styled-components": "^5.0.0-rc.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -40,8 +42,8 @@
     "browserify": "^16.2.3",
     "budo": "^11.6.1",
     "gh-pages": "^0.11.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
     "tinyify": "^2.5.0",

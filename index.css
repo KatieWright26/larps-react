@@ -1,3 +1,54 @@
-main {
-  text-align: center;
+/*
+$base-dark: #202040;
+$base-dark-contrast: #602080;
+$base-mid: #202060;
+$base-mid-contrast: #b030b0;
+$dark-theme-link: #77FFAE;
+$dark-theme-warning-link: #FF471B; */
+
+hr {
+  border-color: #77FFAE;
+  margin: 1.5em auto;
 }
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #202060;
+  color: white;
+  font-size: 1rem;
+  font-family: Helvetica, sans-serif;
+  height: 100%;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  }
+  a {
+    color: #77FFAE;
+    text-decoration: none;
+  }
+
+  button {
+    background-color: #602080;
+    border-color: #b030b0;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 1em;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  button:hover {
+    background-color: #b030b0;
+    box-shadow: 0 0 5px #b030b0;
+    font-weight: bold;
+  }
+  button:focus {
+    box-shadow: 0 0 5px #b030b0;
+  }

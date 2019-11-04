@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Header from './Header';
 import Larp from './Larp';
 import DeleteLarp from './DeleteLarp';
 import CreateLarp from './CreateLarp';
 import CreateCharacter from './CreateCharacter';
 import Character from './Character';
 import DeleteCharacter from './DeleteCharacter';
+import { Page, PageInner } from './styles/Page';
+import { LarpItem, LarpList } from './styles/Larps';
+import { CharacterSection, CharacterArticle } from './styles/Characters';
 
 const mapStateToProps = state => ({
   larps: state.larps,
@@ -42,37 +46,40 @@ class App extends Component {
       deleteCharacter,
     } = this.props;
     return (
-      <div>
-        <h1>Welcome to {this.props.name}</h1>
-
-        <h2>You are logged in as {user.name}</h2>
-
-        <h2>There are {larps.length} larps</h2>
-        <CreateLarp createLarp={createLarp} />
-        <ul>
-          {larps.map(larp => (
-            <div key={larp.id}>
-              <Larp name={larp.name} />
-              <ul>
-                {larp.characters.map(character => (
-                  <div key={character.id}>
-                    <Character larp={larp} character={character} />
-                    <DeleteCharacter
-                      character={character.id}
-                      deleteCharacter={deleteCharacter}
-                    />
-                  </div>
-                ))}
-              </ul>
-              <CreateCharacter
-                larp={larp.id}
-                createCharacter={createCharacter}
-              />
-              <DeleteLarp larp={larp.id} deleteLarp={deleteLarp} />
-            </div>
-          ))}
-        </ul>
-      </div>
+      <Page>
+        <Header user={user} />
+        <PageInner>
+          <article>
+            <h2>There are {larps.length} larps</h2>
+            <CreateLarp createLarp={createLarp} />
+            <LarpList>
+              {larps.map(larp => (
+                <LarpItem key={larp.id}>
+                  <Larp name={larp.name} />
+                  <CharacterSection>
+                    {larp.characters.map(character => (
+                      <CharacterArticle key={character.id}>
+                        <Character larp={larp} character={character} />
+                        <DeleteCharacter
+                          character={character.id}
+                          deleteCharacter={deleteCharacter}
+                        />
+                      </CharacterArticle>
+                    ))}
+                  </CharacterSection>
+                  <hr />
+                  <CreateCharacter
+                    larp={larp.id}
+                    createCharacter={createCharacter}
+                  />
+                  <hr />
+                  <DeleteLarp larp={larp} deleteLarp={deleteLarp} />
+                </LarpItem>
+              ))}
+            </LarpList>
+          </article>
+        </PageInner>
+      </Page>
     );
   }
 }
