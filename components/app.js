@@ -11,25 +11,20 @@ import DeleteCharacter from './DeleteCharacter';
 import { Page, PageInner } from './styles/Page';
 import { LarpItem, LarpList } from './styles/Larps';
 import { CharacterSection, CharacterArticle } from './styles/Characters';
+import {
+  deleteLarpFromDB,
+  deleteCharacter,
+  createLarp,
+  createCharacter,
+} from '../actionCreators';
 
 const mapStateToProps = state => ({
   larps: state.larps,
   user: state.user,
 });
 
-const deleteLarp = payload => ({ type: 'DELETE_LARP', payload });
-
-const deleteCharacter = payload => ({
-  type: 'DELETE_CHARACTER',
-  payload,
-});
-
-const createLarp = payload => ({ type: 'CREATE_LARP', payload });
-
-const createCharacter = payload => ({ type: 'CREATE_CHARACTER', payload });
-
 const mapDispatchToProps = {
-  deleteLarp,
+  deleteLarpFromDB,
   createLarp,
   createCharacter,
   deleteCharacter,
@@ -40,7 +35,7 @@ class App extends Component {
     const {
       user,
       larps,
-      deleteLarp,
+      deleteLarpFromDB,
       createLarp,
       createCharacter,
       deleteCharacter,
@@ -57,15 +52,16 @@ class App extends Component {
                 <LarpItem key={larp.id}>
                   <Larp name={larp.name} />
                   <CharacterSection>
-                    {larp.characters.map(character => (
-                      <CharacterArticle key={character.id}>
-                        <Character larp={larp} character={character} />
-                        <DeleteCharacter
-                          character={character.id}
-                          deleteCharacter={deleteCharacter}
-                        />
-                      </CharacterArticle>
-                    ))}
+                    {larp.characters &&
+                      larp.characters.map(character => (
+                        <CharacterArticle key={character.id}>
+                          <Character larp={larp} character={character} />
+                          <DeleteCharacter
+                            character={character.id}
+                            deleteCharacter={deleteCharacter}
+                          />
+                        </CharacterArticle>
+                      ))}
                   </CharacterSection>
                   <hr />
                   <CreateCharacter
@@ -73,7 +69,7 @@ class App extends Component {
                     createCharacter={createCharacter}
                   />
                   <hr />
-                  <DeleteLarp larp={larp} deleteLarp={deleteLarp} />
+                  <DeleteLarp larp={larp} deleteLarpFromDB={deleteLarpFromDB} />
                 </LarpItem>
               ))}
             </LarpList>
@@ -88,7 +84,7 @@ App.propTypes = {
   createCharacter: PropTypes.func,
   deleteCharacter: PropTypes.func,
   createLarp: PropTypes.func,
-  deleteLarp: PropTypes.func,
+  deleteLarpFromDB: PropTypes.func,
 };
 export default connect(
   mapStateToProps,
