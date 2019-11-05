@@ -8,8 +8,8 @@ it's a real sweet app
 ### install
 
 ```
-git clone https://github.com/katiewright26/larps
-cd 
+git clone https://github.com/katiewright26/larps-react
+cd
 npm install
 ```
 
@@ -18,8 +18,9 @@ npm install
 ```
 npm start
 ```
-
 browse to <http://localhost:9966/>.
+
+to run the backend server, follow instructions at https://github.com/katiewright26/react-larps-api
 
 ## test
 
