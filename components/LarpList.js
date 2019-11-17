@@ -7,7 +7,12 @@ import Larp from './Larp';
 import DeleteLarp from './DeleteLarp';
 
 const LarpList = props => {
-  const { larps, deleteCharacter, createCharacter, deleteLarpFromDB } = props;
+  const {
+    larps,
+    deleteCharacter,
+    createCharacterInDb,
+    deleteLarpFromDB,
+  } = props;
   return (
     <LarpListStyle>
       {larps.map(larp => (
@@ -16,13 +21,17 @@ const LarpList = props => {
           {larp.characters &&
             larp.characters.map(character => (
               <CharacterList
+                key={character.id}
                 larp={larp}
                 character={character}
                 deleteCharacter={deleteCharacter}
               />
             ))}
           <hr />
-          <CreateCharacter larp={larp.id} createCharacter={createCharacter} />
+          <CreateCharacter
+            larp={larp.id}
+            createCharacterInDb={createCharacterInDb}
+          />
           <hr />
           <DeleteLarp larp={larp} deleteLarpFromDB={deleteLarpFromDB} />
         </LarpItem>
@@ -35,7 +44,7 @@ const LarpList = props => {
 LarpList.propTypes = {
   larps: PropTypes.array,
   deleteCharacter: PropTypes.func,
-  createCharacter: PropTypes.func,
+  createCharacterInDb: PropTypes.func,
   deleteLarpFromDB: PropTypes.func,
 };
 

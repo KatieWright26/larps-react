@@ -8,7 +8,7 @@ import LarpList from './LarpList';
 import {
   deleteLarpFromDB,
   deleteCharacter,
-  createCharacter,
+  createCharacterInDb,
   createLarpInDb,
 } from '../actionCreators';
 
@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   deleteLarpFromDB,
-  createCharacter,
+  createCharacterInDb,
   deleteCharacter,
   createLarpInDb,
 };
@@ -30,7 +30,7 @@ class App extends Component {
       user,
       larps,
       deleteLarpFromDB,
-      createCharacter,
+      createCharacterInDb,
       deleteCharacter,
       createLarpInDb,
     } = this.props;
@@ -44,7 +44,7 @@ class App extends Component {
             <LarpList
               larps={larps}
               deleteCharacter={deleteCharacter}
-              createCharacter={createCharacter}
+              createCharacterInDb={createCharacterInDb}
               deleteLarpFromDB={deleteLarpFromDB}
             />
           </article>
@@ -56,7 +56,7 @@ class App extends Component {
 
 // Proptypes related to larps and characters needs to be removed from app component
 App.propTypes = {
-  createCharacter: PropTypes.func,
+  createCharacterInDb: PropTypes.func,
   deleteCharacter: PropTypes.func,
   createLarpInDb: PropTypes.func,
   deleteLarpFromDB: PropTypes.func,
