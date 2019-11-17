@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Form from './styles/Form';
+import { createLarpInDb } from '../actionCreators';
+
+const mapDispatchToProps = { createLarpInDb };
+
+const mapStateToProps = state => ({
+  larps: state.larps,
+});
 
 class CreateLarp extends Component {
   constructor(props) {
@@ -39,4 +47,7 @@ class CreateLarp extends Component {
   }
 }
 
-export default CreateLarp;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateLarp);

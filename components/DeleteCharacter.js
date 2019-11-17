@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteCharacterFromDB } from '../actionCreators';
 
-const DeleteCharacter = props => (
-  <button type="button" onClick={() => props.deleteCharacter(props.character)}>
-    Delete
-  </button>
-);
+const mapStateToProps = state => ({
+  larps: state.larps,
+});
 
-export default DeleteCharacter;
+const mapDispatchToProps = {
+  deleteCharacterFromDB,
+};
+
+class DeleteCharacter extends Component {
+  render() {
+    const { deleteCharacterFromDB, character } = this.props;
+    return (
+      <button type="button" onClick={() => deleteCharacterFromDB(character)}>
+        Delete
+      </button>
+    );
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeleteCharacter);

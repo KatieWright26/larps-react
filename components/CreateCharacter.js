@@ -1,6 +1,15 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Form from './styles/Form';
+import { createCharacterInDb } from '../actionCreators';
+
+const mapStateToProps = state => ({
+  larps: state.larps,
+  characters: state.characters,
+});
+
+const mapDispatchToProps = { createCharacterInDb };
 
 class CreateCharacter extends Component {
   constructor(props) {
@@ -45,4 +54,8 @@ CreateCharacter.propTypes = {
   larp: PropTypes.number,
   createCharacterInDb: PropTypes.func,
 };
-export default CreateCharacter;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateCharacter);

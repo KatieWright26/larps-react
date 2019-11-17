@@ -5,48 +5,25 @@ import Header from './Header';
 import CreateLarp from './CreateLarp';
 import { Page, PageInner } from './styles/Page';
 import LarpList from './LarpList';
-import {
-  deleteLarpFromDB,
-  deleteCharacter,
-  createCharacterInDb,
-  createLarpInDb,
-} from '../actionCreators';
 
 const mapStateToProps = state => ({
   larps: state.larps,
   user: state.user,
 });
 
-const mapDispatchToProps = {
-  deleteLarpFromDB,
-  createCharacterInDb,
-  deleteCharacter,
-  createLarpInDb,
-};
+const mapDispatchToProps = {};
 
 class App extends Component {
   render() {
-    const {
-      user,
-      larps,
-      deleteLarpFromDB,
-      createCharacterInDb,
-      deleteCharacter,
-      createLarpInDb,
-    } = this.props;
+    const { user, larps } = this.props;
     return (
       <Page>
         <Header user={user} />
         <PageInner>
           <article>
             <h2>There are {larps.length} larps</h2>
-            <CreateLarp createLarpInDb={createLarpInDb} />
-            <LarpList
-              larps={larps}
-              deleteCharacter={deleteCharacter}
-              createCharacterInDb={createCharacterInDb}
-              deleteLarpFromDB={deleteLarpFromDB}
-            />
+            <CreateLarp />
+            <LarpList larps={larps} />
           </article>
         </PageInner>
       </Page>
@@ -54,14 +31,9 @@ class App extends Component {
   }
 }
 
-// Proptypes related to larps and characters needs to be removed from app component
 App.propTypes = {
-  createCharacterInDb: PropTypes.func,
-  deleteCharacter: PropTypes.func,
-  createLarpInDb: PropTypes.func,
-  deleteLarpFromDB: PropTypes.func,
-  larps: PropTypes.array,
   user: PropTypes.object,
+  larps: PropTypes.array,
 };
 
 export default connect(
