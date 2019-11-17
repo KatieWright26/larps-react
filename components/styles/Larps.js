@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LarpList = styled.ul`
+const LarpListStyle = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -22,4 +22,4 @@ const LarpItem = styled.li`
   }
 `;
 
-export { LarpItem, LarpList };
+export { LarpItem, LarpListStyle };
