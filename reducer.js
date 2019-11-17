@@ -14,7 +14,7 @@ const reducer = produce((state = initialState, action) => {
       state.larps.push(action.payload);
       break;
     case 'CREATE_CHARACTER':
-      const id = action.payload.larp;
+      const id = action.payload.larp_id;
       const larpIdx = state.larps.findIndex(l => l.id === id);
       state.larps[larpIdx].characters.push({
         name: action.payload.name,
