@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Form from './styles/Form';
 
 class CreateCharacter extends Component {
@@ -15,12 +16,14 @@ class CreateCharacter extends Component {
   }
 
   render() {
+    const { name } = this.state;
+    const { createCharacterInDb } = this.props;
     return (
       <div>
         <Form
           onSubmit={e => {
             e.preventDefault();
-            this.props.createCharacter(this.state);
+            createCharacterInDb(this.state);
             this.setState({ name: '', larp: '' });
           }}
         >
@@ -29,6 +32,7 @@ class CreateCharacter extends Component {
             name="name"
             onChange={this.saveToState}
             placeholder="Enter character name"
+            value={name}
           />
           <input type="submit"></input>
         </Form>
@@ -37,4 +41,8 @@ class CreateCharacter extends Component {
   }
 }
 
+CreateCharacter.propTypes = {
+  larp: PropTypes.number,
+  createCharacterInDb: PropTypes.func,
+};
 export default CreateCharacter;
