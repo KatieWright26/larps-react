@@ -21,9 +21,13 @@ const reducer = produce((state = initialState, action) => {
       });
       break;
     case 'DELETE_CHARACTER':
-      state.larps.map(
-        l => (l.characters = l.characters.filter(c => c.id !== action.payload))
+      state.larps = state.larps.filter(
+        larp =>
+          (larp.characters = larp.characters.filter(
+            character => character.id !== action.payload
+          ))
       );
+      break;
     case 'SET_LARPS':
       state.larps = action.payload;
       break;

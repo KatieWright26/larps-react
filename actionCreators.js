@@ -4,6 +4,10 @@ const setLarps = payload => ({ type: 'SET_LARPS', payload });
 const deleteLarp = payload => ({ type: 'DELETE_LARP', payload });
 const createLarp = payload => ({ type: 'CREATE_LARP', payload });
 const createCharacter = payload => ({ type: 'CREATE_CHARACTER', payload });
+const deleteCharacter = payload => ({
+  type: 'DELETE_CHARACTER',
+  payload,
+});
 
 const requestLarpsFromDb = () => dispatch => {
   request.get('http://localhost:3000/api/v1/larps', (err, res) => {
@@ -15,11 +19,6 @@ const requestLarpsFromDb = () => dispatch => {
     dispatch(setLarps(larps));
   });
 };
-
-const deleteCharacter = payload => ({
-  type: 'DELETE_CHARACTER',
-  payload,
-});
 
 const createLarpInDb = larpName => dispatch => {
   request.post(
@@ -59,8 +58,21 @@ const deleteLarpFromDB = id => dispatch => {
   });
 };
 
+const deleteCharacterFromDB = id => dispatch => {
+  request.delete(
+    `http://localhost:3000/api/v1/characters/${id}`,
+    (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      dispatch(deleteCharacter(id));
+    }
+  );
+};
+
 export {
-  deleteCharacter,
+  deleteCharacterFromDB,
   requestLarpsFromDb,
   deleteLarpFromDB,
   createLarpInDb,
