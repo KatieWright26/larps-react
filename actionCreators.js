@@ -2,6 +2,7 @@ import request from 'request';
 
 const setLarps = payload => ({ type: 'SET_LARPS', payload });
 const deleteLarp = payload => ({ type: 'DELETE_LARP', payload });
+const createLarp = payload => ({ type: 'CREATE_LARP', payload });
 
 const requestLarpsFromDb = () => dispatch => {
   request.get('http://localhost:3000/api/v1/larps', (err, res) => {
@@ -19,7 +20,19 @@ const deleteCharacter = payload => ({
   payload,
 });
 
-const createLarp = payload => ({ type: 'CREATE_LARP', payload });
+const createLarpInDb = larpName => dispatch => {
+  request.post(
+    `http://localhost:3000/api/v1/larps/`,
+    { body: { larpName }, json: true },
+    (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      dispatch(createLarp(res.body.larp));
+    }
+  );
+};
 
 const deleteLarpFromDB = id => dispatch => {
   request.delete(`http://localhost:3000/api/v1/larps/${id}`, (err, res) => {
@@ -34,10 +47,8 @@ const createCharacter = payload => ({ type: 'CREATE_CHARACTER', payload });
 
 export {
   createCharacter,
-  createLarp,
   deleteCharacter,
-  deleteLarp,
-  setLarps,
   requestLarpsFromDb,
   deleteLarpFromDB,
+  createLarpInDb,
 };

@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import Larp from './Larp';
-import DeleteLarp from './DeleteLarp';
 import CreateLarp from './CreateLarp';
-import CreateCharacter from './CreateCharacter';
-import Character from './Character';
-import DeleteCharacter from './DeleteCharacter';
 import { Page, PageInner } from './styles/Page';
-import { LarpItem, LarpList } from './styles/Larps';
-import { CharacterSection, CharacterArticle } from './styles/Characters';
+import LarpList from './LarpList';
 import {
   deleteLarpFromDB,
   deleteCharacter,
-  createLarp,
   createCharacter,
+  createLarpInDb,
 } from '../actionCreators';
 
 const mapStateToProps = state => ({
@@ -25,9 +19,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   deleteLarpFromDB,
-  createLarp,
   createCharacter,
   deleteCharacter,
+  createLarpInDb,
 };
 
 class App extends Component {
@@ -36,9 +30,9 @@ class App extends Component {
       user,
       larps,
       deleteLarpFromDB,
-      createLarp,
       createCharacter,
       deleteCharacter,
+      createLarpInDb,
     } = this.props;
     return (
       <Page>
@@ -46,33 +40,13 @@ class App extends Component {
         <PageInner>
           <article>
             <h2>There are {larps.length} larps</h2>
-            <CreateLarp createLarp={createLarp} />
-            <LarpList>
-              {larps.map(larp => (
-                <LarpItem key={larp.id}>
-                  <Larp name={larp.name} />
-                  <CharacterSection>
-                    {larp.characters &&
-                      larp.characters.map(character => (
-                        <CharacterArticle key={character.id}>
-                          <Character larp={larp} character={character} />
-                          <DeleteCharacter
-                            character={character.id}
-                            deleteCharacter={deleteCharacter}
-                          />
-                        </CharacterArticle>
-                      ))}
-                  </CharacterSection>
-                  <hr />
-                  <CreateCharacter
-                    larp={larp.id}
-                    createCharacter={createCharacter}
-                  />
-                  <hr />
-                  <DeleteLarp larp={larp} deleteLarpFromDB={deleteLarpFromDB} />
-                </LarpItem>
-              ))}
-            </LarpList>
+            <CreateLarp createLarpInDb={createLarpInDb} />
+            <LarpList
+              larps={larps}
+              deleteCharacter={deleteCharacter}
+              createCharacter={createCharacter}
+              deleteLarpFromDB={deleteLarpFromDB}
+            />
           </article>
         </PageInner>
       </Page>
@@ -80,12 +54,16 @@ class App extends Component {
   }
 }
 
+// Proptypes related to larps and characters needs to be removed from app component
 App.propTypes = {
   createCharacter: PropTypes.func,
   deleteCharacter: PropTypes.func,
-  createLarp: PropTypes.func,
+  createLarpInDb: PropTypes.func,
   deleteLarpFromDB: PropTypes.func,
+  larps: PropTypes.array,
+  user: PropTypes.object,
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
