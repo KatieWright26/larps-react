@@ -34,7 +34,9 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
-    "styled-components": "^5.0.0-rc.1"
+    "styled-components": "^5.0.0-rc.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -44,8 +46,6 @@
     "browserify": "^16.2.3",
     "budo": "^11.6.1",
     "gh-pages": "^0.11.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.11.0",
     "tinyify": "^2.5.0",
