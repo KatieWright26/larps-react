@@ -5,6 +5,7 @@ import Header from './Header';
 import CreateLarp from './CreateLarp';
 import { Page, PageInner } from './styles/Page';
 import LarpList from './LarpList';
+import LarpFormContainer from './styles/LarpFormContainer';
 
 const mapStateToProps = state => ({
   larps: state.larps,
@@ -22,7 +23,9 @@ class App extends Component {
         <PageInner>
           <article>
             <h2>There are {larps.length} larps</h2>
-            <CreateLarp />
+            <LarpFormContainer>
+              <CreateLarp />
+            </LarpFormContainer>
             <LarpList larps={larps} />
           </article>
         </PageInner>

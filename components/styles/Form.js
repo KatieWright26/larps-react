@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const Form = styled.form`
   border-color: #b030b0;
-  display: flex;
+  display: block;
   h2,
   p,
   label {
@@ -30,23 +30,28 @@ const Form = styled.form`
   textarea,
   select {
     background-color: #202060;
-    border: 1px solid #b030b0;
-    color: #b030b0;
+    border: 2px solid #b030b0;
+    color: #77ffae;
+    display: block;
     font-weight: bold;
     letter-spacing: 1px;
     padding: 1em;
-    margin: 0 5px;
-    flex: 2 1 auto;
+    width: 80%;
+    margin: 1em auto;
     &:focus,
     &:hover {
-      box-shadow: 0 0 5px #b030b0;
+      box-shadow: 0 0 10px #b030b0;
       outline: #b030b0;
     }
   }
 
-  input[type='submit'] {
-    flex: 0 1 auto;
+  input::placeholder,
+  textarea::placeholder {
+    color: white;
+    opacity: 0.6;
+    letter-spacing: 2px;
   }
+
   input[type='submit']:hover {
     background-color: #602080;
     cursor: pointer;

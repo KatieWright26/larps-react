@@ -26,31 +26,29 @@ class CreateLarp extends Component {
     const { createLarpInDb } = this.props;
     const { name, description } = this.state;
     return (
-      <div>
-        <Form
-          onSubmit={e => {
-            e.preventDefault();
-            createLarpInDb(this.state);
-            this.setState({ name: '', description: '' });
-          }}
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter LARP name"
-            onChange={this.saveToState}
-            value={name}
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="Enter description for LARP"
-            onChange={this.saveToState}
-            value={description}
-          />
-          <input type="submit" />
-        </Form>
-      </div>
+      <Form
+        onSubmit={e => {
+          e.preventDefault();
+          createLarpInDb(this.state);
+          this.setState({ name: '', description: '' });
+        }}
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter LARP name"
+          onChange={this.saveToState}
+          value={name}
+        />
+        <textarea
+          rows="5"
+          name="description"
+          placeholder="Enter description for LARP"
+          onChange={this.saveToState}
+          value={description}
+        />
+        <input type="submit" />
+      </Form>
     );
   }
 }
