@@ -14,6 +14,7 @@ class CreateLarp extends Component {
     super(props);
     this.state = {
       name: '',
+      description: '',
     };
 
     this.saveToState = e => {
@@ -23,14 +24,14 @@ class CreateLarp extends Component {
 
   render() {
     const { createLarpInDb } = this.props;
-    const { name } = this.state;
+    const { name, description } = this.state;
     return (
       <div>
         <Form
           onSubmit={e => {
             e.preventDefault();
-            createLarpInDb(name);
-            this.setState({ name: '' });
+            createLarpInDb(this.state);
+            this.setState({ name: '', description: '' });
           }}
         >
           <input
@@ -39,6 +40,13 @@ class CreateLarp extends Component {
             placeholder="Enter LARP name"
             onChange={this.saveToState}
             value={name}
+          />
+          <input
+            type="text"
+            name="description"
+            placeholder="Enter description for LARP"
+            onChange={this.saveToState}
+            value={description}
           />
           <input type="submit" />
         </Form>

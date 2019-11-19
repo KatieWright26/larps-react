@@ -20,10 +20,13 @@ const requestLarpsFromDb = () => dispatch => {
   });
 };
 
-const createLarpInDb = larpName => dispatch => {
+const createLarpInDb = larp => dispatch => {
   request.post(
     `http://localhost:3000/api/v1/larps/`,
-    { body: { larpName }, json: true },
+    {
+      body: { name: larp.name, description: larp.description },
+      json: true,
+    },
     (err, res) => {
       if (err) {
         console.log(err);
