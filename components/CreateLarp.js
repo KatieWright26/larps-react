@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { start } from 'repl';
 import Form from './styles/Form';
 import { createLarpInDb } from '../actionCreators';
 
@@ -15,6 +16,8 @@ class CreateLarp extends Component {
     this.state = {
       name: '',
       description: '',
+      location: '',
+      startDate: '',
     };
 
     this.saveToState = e => {
@@ -24,13 +27,18 @@ class CreateLarp extends Component {
 
   render() {
     const { createLarpInDb } = this.props;
-    const { name, description } = this.state;
+    const { name, description, location, startDate } = this.state;
     return (
       <Form
         onSubmit={e => {
           e.preventDefault();
           createLarpInDb(this.state);
-          this.setState({ name: '', description: '' });
+          this.setState({
+            name: '',
+            description: '',
+            startDate: '',
+            location: '',
+          });
         }}
       >
         <input
@@ -46,6 +54,19 @@ class CreateLarp extends Component {
           placeholder="Enter description for LARP"
           onChange={this.saveToState}
           value={description}
+        />
+        <input
+          type="text"
+          name="location"
+          placeholder="Enter a location"
+          onChange={this.saveToState}
+          value={location}
+        />
+        <input
+          type="date"
+          name="startDate"
+          onChange={this.saveToState}
+          value={startDate}
         />
         <input type="submit" />
       </Form>

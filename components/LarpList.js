@@ -12,7 +12,12 @@ const LarpList = props => {
     <LarpListStyle>
       {larps.map(larp => (
         <LarpItem key={larp.id}>
-          <Larp name={larp.name} description={larp.description} />
+          <Larp
+            name={larp.name}
+            description={larp.description}
+            date={larp.startDate}
+            location={larp.location}
+          />
           {larp.characters &&
             larp.characters.map(character => (
               <Character key={character.id} larp={larp} character={character} />

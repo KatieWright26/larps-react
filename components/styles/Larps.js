@@ -10,9 +10,9 @@ const LarpListStyle = styled.ul`
 
 const LarpItem = styled.li`
   border: 1px solid #b030b0;
-  flex: 1 1 auto;
-  max-width: 48%;
+  flex: 1 1;
   padding: 1.5em;
+  margin: 1em;
   text-transform: capitalize;
   h2 {
     margin: 0em;
