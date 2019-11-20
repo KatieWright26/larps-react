@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { start } from 'repl';
 import Form from './styles/Form';
 import { createLarpInDb } from '../actionCreators';
 
@@ -48,13 +47,6 @@ class CreateLarp extends Component {
           onChange={this.saveToState}
           value={name}
         />
-        <textarea
-          rows="5"
-          name="description"
-          placeholder="Enter description for LARP"
-          onChange={this.saveToState}
-          value={description}
-        />
         <input
           type="text"
           name="location"
@@ -68,6 +60,14 @@ class CreateLarp extends Component {
           onChange={this.saveToState}
           value={startDate}
         />
+        <textarea
+          rows="7"
+          name="description"
+          placeholder="Enter description for LARP"
+          onChange={this.saveToState}
+          value={description}
+        />
+
         <input type="submit" />
       </Form>
     );

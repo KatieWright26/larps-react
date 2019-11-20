@@ -8,7 +8,7 @@ const Character = props => {
   return (
     <CharacterSection>
       <CharacterArticle>
-        <h3>{character.name}</h3>
+        <h5>{character.name}</h5>
         <DeleteCharacter character={character.id} key={character.id} />
       </CharacterArticle>
     </CharacterSection>

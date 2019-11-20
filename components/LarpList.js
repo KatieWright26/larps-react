@@ -18,11 +18,16 @@ const LarpList = props => {
             date={larp.startDate}
             location={larp.location}
           />
+          <hr />
+          <h4>
+            {larp.characters.length
+              ? 'Characters:'
+              : 'No Characters created. Create one below:'}
+          </h4>
           {larp.characters &&
             larp.characters.map(character => (
               <Character key={character.id} larp={larp} character={character} />
             ))}
-          <hr />
           <CreateCharacter larp={larp.id} />
           <hr />
           <DeleteLarp larp={larp} key={larp.id} />

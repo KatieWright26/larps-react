@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Form from './styles/Form';
+import CharacterForm from './styles/CharacterForm';
 import { createCharacterInDb } from '../actionCreators';
 
 const mapStateToProps = state => ({
@@ -29,7 +29,7 @@ class CreateCharacter extends Component {
     const { createCharacterInDb } = this.props;
     return (
       <div>
-        <Form
+        <CharacterForm
           onSubmit={e => {
             e.preventDefault();
             createCharacterInDb(this.state);
@@ -44,7 +44,7 @@ class CreateCharacter extends Component {
             value={name}
           />
           <input type="submit"></input>
-        </Form>
+        </CharacterForm>
       </div>
     );
   }
