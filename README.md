@@ -1,7 +1,4 @@
-
-# larps
-
-it's a real sweet app
+# React Larps
 
 ## how
 
