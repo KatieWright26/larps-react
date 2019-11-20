@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
-import CreateLarp from './CreateLarp';
 import { Page, PageInner } from './styles/Page';
-import LarpList from './LarpList';
-import LarpFormContainer from './styles/LarpFormContainer';
+import Larps from './Larps';
+import Home from './Home';
 
 const mapStateToProps = state => ({
   larps: state.larps,
@@ -21,13 +21,14 @@ class App extends Component {
       <Page>
         <Header user={user} />
         <PageInner>
-          <article>
-            <h2>There are {larps.length} larps</h2>
-            <LarpFormContainer>
-              <CreateLarp />
-            </LarpFormContainer>
-            <LarpList larps={larps} />
-          </article>
+          <Switch>
+            <Route path="/larps">
+              <Larps larps={larps} />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         </PageInner>
       </Page>
     );
