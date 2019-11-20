@@ -8,7 +8,12 @@ import styled from 'styled-components';
 
 const Form = styled.form`
   border-color: #b030b0;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 200px;
+  align-content: center;
+
   h2,
   p,
   label {
@@ -36,8 +41,7 @@ const Form = styled.form`
     font-weight: bold;
     letter-spacing: 1px;
     padding: 1em;
-    width: 80%;
-    margin: 1em auto;
+    margin: 0.5em;
     &:focus,
     &:hover {
       box-shadow: 0 0 10px #b030b0;
@@ -50,6 +54,11 @@ const Form = styled.form`
     color: white;
     opacity: 0.6;
     letter-spacing: 2px;
+  }
+
+  input {
+    width: 350px;
+    flex: 1 1 auto;
   }
 
   input[type='submit']:hover {
