@@ -13,15 +13,12 @@ class App extends Component {
         <Header />
         <PageInner>
           <Switch>
-            <Route path="/larps/:larpId">
-              <ShowLarp />
-            </Route>
-            <Route path="/larps">
-              <Larps />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Route
+              path="/larps/:larpId"
+              render={props => <ShowLarp {...props} />}
+            />
+            <Route path="/larps" component={Larps} />
+            <Route exact path="/" component={Home} />
           </Switch>
         </PageInner>
       </Page>

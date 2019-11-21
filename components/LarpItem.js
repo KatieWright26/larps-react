@@ -33,7 +33,7 @@ const LarpList = props => {
       <hr />
       <DeleteLarp larp={larp} key={larp.id} />
       <Link to={`${url}/${larp.id}`}>
-        <button>Read More...</button>
+        <button type="button">Read More...</button>
       </Link>
     </LarpItem>
   );

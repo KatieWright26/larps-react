@@ -1,8 +1,33 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-function ShowLarp() {
-  const { larpId } = useParams();
-  return <h3>Requested larp ID: {larpId}</h3>;
+const mapStateToProps = state => ({
+  larps: state.larps,
+});
+
+const mapDispatchToProps = {};
+
+class ShowLarp extends Component {
+  render() {
+    const { larpId } = this.props.match.params;
+    const { larps } = this.props;
+    const id = parseInt(larpId);
+    const larp = larps.filter(l => l.id === id)[0];
+    return (
+      <>
+        <h1>{larp.name}</h1>
+        <p>{larp.description}</p>
+      </>
+    );
+  }
 }
-export default ShowLarp;
+
+ShowLarp.propTypes = {
+  larps: PropTypes.array,
+  larpId: PropTypes.string,
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShowLarp);
