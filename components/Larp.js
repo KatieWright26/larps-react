@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { truncate } from '../lib/stringFormatting';
 
 const Larp = props => {
   const { name, description, date, location } = props;
   return (
     <div>
       <h2>{name}</h2>
-      <p>{description}</p>
+      {description && <p>{truncate(description, 150)}</p>}
       {date && location && (
         <>
           <hr />
