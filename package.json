@@ -4,7 +4,7 @@
   "description": "it's a real sweet app",
   "main": "index.js",
   "scripts": {
-    "start": "budo . -d --serve bundle.js --live",
+    "start": "budo . -d --serve bundle.js --live --pushstate",
     "build": "browserify . -o bundle.js -p tinyify",
     "test": "browserify test/index.js | node | tap-spec",
     "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
