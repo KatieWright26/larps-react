@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Form from './styles/Form';
-import { createLarpInDb } from '../actionCreators';
-
-const mapDispatchToProps = { createLarpInDb };
-
-const mapStateToProps = state => ({
-  larps: state.larps,
-});
 
 class CreateLarp extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: '',
       description: '',
@@ -25,13 +19,14 @@ class CreateLarp extends Component {
   }
 
   render() {
-    const { createLarpInDb } = this.props;
+    const { createLarp } = this.props;
     const { name, description, location, startDate } = this.state;
+
     return (
       <Form
         onSubmit={e => {
           e.preventDefault();
-          createLarpInDb(this.state);
+          createLarp(this.state);
           this.setState({
             name: '',
             description: '',
@@ -74,7 +69,8 @@ class CreateLarp extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateLarp);
+CreateLarp.propTypes = {
+  createLarp: PropTypes.func,
+};
+
+export default CreateLarp;

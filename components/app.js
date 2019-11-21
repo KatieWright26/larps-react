@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import { Page, PageInner } from './styles/Page';
 import Larps from './Larps';
 import Home from './Home';
-
-const mapStateToProps = state => ({
-  larps: state.larps,
-  user: state.user,
-});
-
-const mapDispatchToProps = {};
+import ShowLarp from './ShowLarp';
 
 class App extends Component {
   render() {
-    const { user, larps } = this.props;
     return (
       <Page>
-        <Header user={user} />
+        <Header />
         <PageInner>
           <Switch>
-            <Route path="/larps">
-              <Larps larps={larps} />
+            <Route path="/larps/:larpId">
+              <ShowLarp />
             </Route>
-            <Route path="/">
+            <Route path="/larps">
+              <Larps />
+            </Route>
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>
@@ -35,12 +29,4 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  user: PropTypes.object,
-  larps: PropTypes.array,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
