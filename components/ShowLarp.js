@@ -14,11 +14,13 @@ class ShowLarp extends Component {
     const { larps } = this.props;
     const id = parseInt(larpId);
     const larp = larps.filter(l => l.id === id)[0];
-    return (
+    return larp ? (
       <>
         <h1>{larp.name}</h1>
         <p>{larp.description}</p>
       </>
+    ) : (
+      <h1>Larp not found</h1>
     );
   }
 }
@@ -27,6 +29,7 @@ ShowLarp.propTypes = {
   larps: PropTypes.array,
   larpId: PropTypes.string,
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

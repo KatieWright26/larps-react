@@ -9,7 +9,7 @@ import reducer from './reducer';
 import { requestLarpsFromDb } from './actionCreators';
 
 const store = createStore(reducer, applyMiddleware(thunk));
-
+console.log('welcome to larps');
 render(
   <Provider store={store}>
     <BrowserRouter>
@@ -20,5 +20,3 @@ render(
 );
 
 store.dispatch(requestLarpsFromDb());
-
-console.log('welcome to larps');
