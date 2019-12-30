@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import React from 'react';
 import LarpItem from './LarpItem';
 import LarpFormContainer from './styles/LarpFormContainer';
 import CreateLarp from './CreateLarp';
@@ -13,29 +13,20 @@ const mapStateToProps = state => ({
   larps: state.larps,
 });
 
-class Larps extends Component {
-  render() {
-    const { larps, createLarpInDb } = this.props;
-
-    const createLarp = payload => {
-      createLarpInDb(payload);
-    };
-
-    return (
-      <article>
-        <h2>There are {larps.length} larps</h2>
-        <LarpFormContainer>
-          <CreateLarp createLarp={createLarp} />
-        </LarpFormContainer>
-        <LarpListStyle>
-          {larps.map(larp => (
-            <LarpItem larp={larp} key={larp.id} />
-          ))}
-        </LarpListStyle>
-      </article>
-    );
-  }
-}
+const Larps = ({ larps, createLarpInDb }) => (
+  <article>
+    <h2>There are {larps.length} larps</h2>
+    <LarpFormContainer>
+      <CreateLarp createLarp={payload => createLarpInDb(payload)} />
+    </LarpFormContainer>
+    <LarpListStyle>
+      {larps.map(larp => (
+        <LarpItem larp={larp} key={larp.id} />
+      ))}
+      ;
+    </LarpListStyle>
+  </article>
+);
 
 Larps.propTypes = {
   createLarpInDb: PropTypes.func,

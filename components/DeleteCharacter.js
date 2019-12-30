@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { deleteCharacterFromDB } from '../actionCreators';
 
 const mapStateToProps = state => ({
@@ -10,17 +11,15 @@ const mapDispatchToProps = {
   deleteCharacterFromDB,
 };
 
-class DeleteCharacter extends Component {
-  render() {
-    const { deleteCharacterFromDB, character } = this.props;
-    return (
-      <button type="button" onClick={() => deleteCharacterFromDB(character)}>
-        Delete
-      </button>
-    );
-  }
-}
-
+const DeleteCharacter = ({ deleteCharacterFromDB, character }) => (
+  <button type="button" onClick={() => deleteCharacterFromDB(character)}>
+    Delete
+  </button>
+);
+DeleteCharacter.propTypes = {
+  character: PropTypes.number,
+  deleteCharacterFromDB: PropTypes.func,
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
