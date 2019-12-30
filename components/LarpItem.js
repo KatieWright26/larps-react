@@ -12,12 +12,7 @@ const LarpList = ({ larp }) => {
 
   return (
     <LarpItem>
-      <Larp
-        name={larp.name}
-        description={larp.description}
-        date={larp.startDate}
-        location={larp.location}
-      />
+      <Larp larp={larp} />
       <hr />
       <h4>
         {larp.characters && larp.characters.length
@@ -26,9 +21,9 @@ const LarpList = ({ larp }) => {
       </h4>
       {larp.characters &&
         larp.characters.map(character => (
-          <Character key={character.id} larp={larp} character={character} />
+          <Character key={character.id} character={character} />
         ))}
-      <CreateCharacter larp={larp.id} />
+      <CreateCharacter larpId={larp.id} />
       <hr />
       <DeleteLarp larp={larp} key={larp.id} />
       <Link to={`${url}/${larp.id}`}>
