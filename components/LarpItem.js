@@ -7,8 +7,7 @@ import CreateCharacter from './CreateCharacter';
 import Larp from './Larp';
 import DeleteLarp from './DeleteLarp';
 
-const LarpList = props => {
-  const { larp } = props;
+const LarpList = ({ larp }) => {
   const { url } = useRouteMatch();
 
   return (
